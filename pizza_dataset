@@ -1,0 +1,15 @@
+Veg = {"MARGHERITA":["A hugely popular margherita,a deliciously tangy single cheese topping"],"DOUBLE CHEESE MARGHERITA":["The ever-popular Margherita - loaded with extra cheese... oodies of it"],
+       "FARM HOUSE":["A pizza that goes ballistic on veggies! Check out this mouth watering overload of crunchy, crisp capsicum, succulent mushrooms and fresh tomatoes"],
+       "PEPPY PANEER":["Chunky paneer with crisp capsicum and spicy red pepper - quite a mouthful!"],
+       "MEXICAN GREEN WAVE":["A pizza loaded with crunchy onions, crisp capsicum, juicy tomatoes and jalapeno with a liberal sprinkling of exotic Mexican herbs"],
+       "DELUXE VEGGIE":["For a vegetarian looking for a BIG treat that goes easy on the spices, this one's got it all.. The onions, the capsicum, those delectable mushrooms - with paneer and golden corn to top it all."],
+       "5 PEPPER":["Dominos introduces 5 Peppers an exotic new Pizza. Topped wih red bell pepper, yellow bell pepper, capsicum, red paprika, jalapeno & sprinked with exotic herb"],
+       "VEG EXTRAVAGANZA":["A pizza that decidedly staggers under an overload of golden corn, exotic black olives, crunchy onions, crisp capsicum, succulent mushrooms, juicyfresh tomatoes and jalapeno - with extra cheese to go all around."],
+       "CHEESE N CORN":["Cheese I Golden Corn"],  "PANEER MAKHANI":["Paneer and Capsicum on Makhani Sauce"],  "VEGGIE PARADISE":["Goldern Corn, Black Olives, Capsicum & Red Paprika"]
+       
+Crust = {"New Hand Tossed":0,"Wheat Thin Rice":50,"Cheese Burst":99,"Fresh Pan pizza":35}
+
+Size = {"regular":235,"medium":450,"large":695}
+
+Extratopp = {"onion":30,"paneer":30,"black olive":30,"paneer":30,"golden corn":30,"jalapeno":45,
+             "red paprika":50,"fresh tomato":25,"crisp capsicum":35,"extracheese":45}
