@@ -1,74 +1,18 @@
 
 # coding: utf-8
 
-# DATA
+# In[ ]:
+import date_time_parser_data
+from date_time_parser_data import *
 
-# In[10]:
+import get_input_function
+from get_input_function import *
 
-
-obj={'day':1,'date':1,'week':7,'fortnight':14,'month':1,'year':1,'decade':10,'century':100}
-
-multi={'before':-1,'after':1,'later':1,'next':1,'previous':-1,'this':0,'last':-1}
-
-
-drx_obj={'today':0,'tomorrow':1,'yesterday':-1}
+import get_present_datetime
+from get_present_datetime import *
 
 
-days={'sunday':0,'monday':1,'tuesday':2,'wednesday':3,'thursday':4,'friday':5,'saturday':6}
-
-
-# LEVELER
-
-# In[11]:
-
-
-date_lvler=[['year','decade','century'],['month'],
-            ['day','date','week','fortnight','today','tomorrow','yesterday']]
-
-
-# GET INPUT
-
-# In[12]:
-
-
-def get_ip():
-    a=input('gimmie some input')
-    a=a.lower()
-    lis= a.split()
-    return lis
-
-
-# GET PRESENT DATE TIME
-
-# In[13]:
-
-
-import datetime
-a=datetime.datetime.now()
-a=str(a)
-a=a.split()
-date_now=a[0].split('-')
-time_now=a[1].split(':')
-
-for i in date_now:
-    date_now[date_now.index(i)]=int(i)
-
-for i in time_now:
-    time_now[time_now.index(i)]=float(i)
-    
-# GET DAY    
-import datetime
-now = datetime.datetime.now()
-day=now.strftime("%A")
-day_now=day.lower()
-
-
-# ALGO
-
-# In[14]:
-
-
-
+#temp variable u will understand its importance later
 temp=999
 
 #lis=get_ip()
@@ -77,60 +21,134 @@ temp=999
 a=input()
 lis=a.split()
 
-
+time_list=[1,2,3,6,7,8,9,10,11,12]
     #creating and filling heap
 big_heap=[]
 for item in lis:
     if item in obj or multi or drx_obj:
         big_heap.append(item)
 num=0
-for item in big_heap:
+
+length_heap=len(big_heap)
+
+while num<length_heap:
         #if item is drx_obj
-    if item in drx_obj:
+        
+        
+    if big_heap[num] in days:
+        if temp==999:
+            temp=0
+        a=(days[day_now]-days[big_heap[num]])*-1
+        if a>0 or a==0:
+            date_now[2]+=a + temp*7
+            
+        if a<0:
+            date_now[2]+=7+a +temp*7
+        
+        temp=999
+        
+    if big_heap[num] in drx_obj:
         for grp in date_lvler:
-            if item in grp:
-                date_now[date_lvler.index(grp)]+=drx_obj[item]
+            if big_heap[num] in grp:
+                date_now[date_lvler.index(grp)]+=drx_obj[big_heap[num]]
 
 
         #if item is multi or obj
 
-    if item in multi:
+    if big_heap[num] in multi:
         if temp!=999:
-            temp=temp*multi[item]
+            temp=temp*multi[big_heap[num]]
             for grp in date_lvler:
                 if big_heap[num-1] in grp:
                     date_now[date_lvler.index(grp)]+=temp
                     temp=999
         else:
-            temp=multi[item]
+            temp=multi[big_heap[num]]
 
 
-    if item in obj:
+    if big_heap[num] in obj:
         if temp!=999:
-            temp=temp*obj[item]
+            temp=temp*obj[big_heap[num]]
             for grp in date_lvler:
-                if item in grp:
+                if big_heap[num] in grp:
                     date_now[date_lvler.index(grp)]+=temp
                     temp=999
         else:
-            temp=obj[item]
+            temp=obj[big_heap[num]]
+            
+            
+    if big_heap[num] in obj_s:
+        if temp!=999:
+            temp=temp*obj_s[big_heap[num]]*int(big_heap[num-1])
+            for grp in date_lvler:
+                if big_heap[num] in grp:
+                    date_now[date_lvler.index(grp)]+=temp
+                    temp=999
+        else:
+            temp=obj_s[big_heap[num]]*int(big_heap[num-1])
+            
+            
+    if big_heap[num] == 'a.m.':
+        ttemp=big_heap[num-1]
+        ttemp=ttemp.split(':')
+        if len(ttemp)==1:
+            time_now[0]=ttemp[0]
+        if len(ttemp)==2:
+            time_now[0]=ttemp[0]
+            time_now[1]=ttemp[1]
+            
+    if big_heap[num] == 'p.m.':
+        ttemp=big_heap[num-1]
+        ttemp=ttemp.split(':')
+        if len(ttemp)==1:
+            time_now[0]=str(int(ttemp[0])+12)
+            time_now[1]=0
+            time_now[2]=0
+        if len(ttemp)==2:
+            time_now[0]=str(int(ttemp[0])+12)
+            time_now[1]=ttemp[1]
+            time_now[2]=0
+            
+                
             
     num+=1
     
-    answer=date_now
+ 
+    
+if date_now[1]>12:
+    mtemp=date_now[1]
+    date_now[1]%=12
+    date_now[0]+=(mtemp/12)+1
+    
+if date_now[1]==(1 or 3 or 5 or 7 or 8 or 10 or 12) and date_now[2]>31:
+    dtemp=date_now[2]
+    date_now[2]%=31
+    date_now[1]+=(dtemp/31)+1
     
     
+if date_now[1]==(4 or 6 or 9 or 11) and date_now[2]>30:
+    dtemp=date_now[2]
+    date_now[2]%=30
+    date_now[1]+=(dtemp/30)+1
+    
+    
+if date_now[1]==2:
+    if ((date_now[0]%4==0 and date_now[0]%100!=0) or date_now[0]%400==0):
+        if date_now[2]>29:
+            dtemp=date_now[2]
+            date_now[2]%29
+            date_now[1]+=(dtemp/29)+1
+    else:
+        if date_now[2]>28:
+            dtemp=date_now[2]
+            date_now[2]%28
+            date_now[1]+=(dtemp/28)+1
 
 
-# In[15]:
 
 
-answer
 
-
-# In[8]:
 
 print(date_now)
-del date_now
-del time_now
+print(time_now)
 
