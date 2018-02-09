@@ -39,4 +39,3 @@ def voice_output(ans):
     eng=pyttsx3.init()
     eng.say(ans)
     eng.runAndWait()
-    
