@@ -11,6 +11,9 @@ from get_input_function import *
 import get_present_datetime
 from get_present_datetime import *
 
+import Voice
+from Voice import *
+
 
 #temp variable u will understand its importance later
 temp=999
@@ -19,6 +22,7 @@ temp=999
 
 #get ip
 a=input()
+#a=voice_input()
 lis=a.split()
 
 time_list=[1,2,3,6,7,8,9,10,11,12]
@@ -88,15 +92,43 @@ while num<length_heap:
             temp=obj_s[big_heap[num]]*int(big_heap[num-1])
             
             
+    if big_heap[num] == 'a.m':
+        ttemp=big_heap[num-1]
+        ttemp=ttemp.split(':')
+        if len(ttemp)==1:
+            time_now[0]=ttemp[0]
+            time_now[1]=0
+            time_now[2]=0
+            if len(ttemp)==2:
+                time_now[0]=ttemp[0]
+                time_now[1]=ttemp[1]
+                time_now[2]=0
+
     if big_heap[num] == 'a.m.':
         ttemp=big_heap[num-1]
         ttemp=ttemp.split(':')
         if len(ttemp)==1:
             time_now[0]=ttemp[0]
-        if len(ttemp)==2:
-            time_now[0]=ttemp[0]
-            time_now[1]=ttemp[1]
+            time_now[1]=0
+            time_now[2]=0
+            if len(ttemp)==2:
+                time_now[0]=ttemp[0]
+                time_now[1]=ttemp[1]
+                time_now[2]=0
             
+    if big_heap[num] == 'p.m':
+        ttemp=big_heap[num-1]
+        ttemp=ttemp.split(':')
+        if len(ttemp)==1:
+            time_now[0]=str(int(ttemp[0])+12)
+            time_now[1]=0
+            time_now[2]=0
+        if len(ttemp)==2:
+            time_now[0]=str(int(ttemp[0])+12)
+            time_now[1]=ttemp[1]
+            time_now[2]=0
+            
+
     if big_heap[num] == 'p.m.':
         ttemp=big_heap[num-1]
         ttemp=ttemp.split(':')
@@ -109,7 +141,6 @@ while num<length_heap:
             time_now[1]=ttemp[1]
             time_now[2]=0
             
-                
             
     num+=1
     
