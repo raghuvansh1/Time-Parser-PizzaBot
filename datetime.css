@@ -1,0 +1,48 @@
+body{ background-image: url("http://www.qygjxz.com/data/out/186/4194079-plain-background-images.jpg");}
+
+#wrap{
+  width:80%;
+  margin:20px auto;
+}
+#movies_layout{
+  color:#808080;
+}
+#movies_layout h1{ color: #554a42; font-family: 'Righteous', cursive; font-size: 65px;
+     font-weight: normal; line-height: 60px; margin: 10px 0 20px;
+     text-transform: uppercase; text-shadow: 2px 2px 0 #000, margin: 10px 0 24px; text-align: center; }
+#movies_layout.cart_info{
+  border-top:2px solid #ccc;
+  width:100%;
+  padding:1em;
+  height:270px;
+  max-height:300px;
+  border-bottom:2px solid #ccc;
+}
+#movies_layout.cart_info.product1{
+  display:block;
+  float:left;
+  width:30%;
+}
+#movies_layout.cart_info.product1{
+  display:block;
+  float:inherit;
+  width:30%;
+}
+#movies_layout.cart_info.product1{
+  display:block;
+  float:right;
+  width:30%;
+}
+.button{
+  margin-top:15px;
+  background:#ffc04d;
+  height:35px;
+  display:block;
+  color:#FFF;
+  text-align:center;
+  padding:5px;
+  text-decoration:none;
+  font-size:2em;
+  box-sizing:border-box;
+  border-radius:3px;
+}
